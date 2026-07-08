@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>Snake Game</h1>
+    <div class="hud">
+      <div>Score: <span id="score">0</span></div>
+      <div>Speed: <span id="speed">1x</span></div>
+      <div class="controls">
+        <button id="pauseBtn">Pause</button>
+        <button id="restartBtn">Restart</button>
+      </div>
+    </div>
+    <canvas id="game" width="525" height="525"></canvas>
+    <div class="dpad" id="dpad">
+      <button class="btn up" data-dir="up">▲</button>
+      <div class="row">
+        <button class="btn left" data-dir="left">◀</button>
+        <button class="btn right" data-dir="right">▶</button>
+      </div>
+      <button class="btn down" data-dir="down">▼</button>
+    </div>
+    <p class="hint">Use Arrow keys / WASD. Space to pause, R to restart.</p>
+  </div>
+  <script src="src/game.js"></script>
+  <script src="src/input.js"></script>
+  <script src="src/renderer.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
