@@ -1,5 +1,5 @@
 (function(){
-  const game = typeof require !== 'undefined' ? require('./game.js') : window.game; // allow direct script if bundled elsewhere
+  const game = (typeof module === 'object' && module.exports) ? require('./game.js') : window.game; // allow direct script if bundled elsewhere
   const boardEl = document.getElementById('board');
   const statusEl = document.getElementById('status');
   const resetBtn = document.getElementById('reset');
