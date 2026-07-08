@@ -1,0 +1,9 @@
+{
+  "name": "snake-game",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest --runInBand",
+    "lint": "echo 'No lint config'"
+  }
+}
