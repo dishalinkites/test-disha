@@ -1,0 +1,16 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest --colors",
+    "build": "bash -lc \"rm -rf dist && mkdir -p dist/src && cp index.html dist/index.html && cp styles.css dist/styles.css 2>/dev/null || true && cp -r src dist/src\""
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
