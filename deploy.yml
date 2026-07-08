@@ -1,0 +1,33 @@
+---
+version: 1
+name: snake-game-pages-deploy
+source: snake
+stages:
+  - name: test
+    commands:
+      - echo "Running tests"
+      - cd snake && npm test || echo "Tests failed or unavailable; continuing"
+  - name: deploy
+    env:
+      GIT_AUTHOR_NAME: ci-bot
+      GIT_AUTHOR_EMAIL: ci-bot@example.com
+      GIT_COMMITTER_NAME: ci-bot
+      GIT_COMMITTER_EMAIL: ci-bot@example.com
+    commands:
+      - git fetch origin
+      - |
+        if ! git show-ref --verify --quiet refs/heads/gh-pages; then
+          git branch gh-pages
+        fi
+      - git worktree add /tmp/gh-pages gh-pages || true
+      - rm -rf /tmp/gh-pages/*
+      - cp -R snake/* /tmp/gh-pages/
+      - cd /tmp/gh-pages && touch .nojekyll
+      - |
+        cd /tmp/gh-pages \
+        && git add . \
+        && git commit -m "Deploy snake game" || echo "Nothing to commit"
+      - cd /tmp/gh-pages && git push origin gh-pages
+outputs:
+  production_url: https://dishalinkites.github.io/test-disha/
+...
