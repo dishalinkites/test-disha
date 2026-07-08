@@ -1,0 +1,33 @@
+pipeline: "Employee Management Deploy"
+env:
+  NODE_VERSION: "20"
+  REGISTRY: "ghcr.io"
+  IMAGE_NAME: "ghcr.io/dishalinkites/test-disha"
+steps:
+  - name: Setup Node
+    run: |
+      node -v || true
+  - name: Install dependencies
+    run: |
+      npm ci
+  - name: Run unit tests
+    run: |
+      npm run test -- --ci
+  - name: Run e2e tests
+    run: |
+      npm run test:e2e -- --ci
+  - name: Build app
+    run: |
+      npm run build
+  - name: Build and push Docker image
+    env:
+      GITHUB_TOKEN: "${GITHUB_TOKEN}"
+    run: |
+      echo "Logging in to GHCR"
+      echo "$GITHUB_TOKEN" | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin || echo "Using default token context"
+      IMAGE_TAG=${GITHUB_SHA:-local}
+      docker build -t ${IMAGE_NAME}:$IMAGE_TAG -t ${IMAGE_NAME}:latest .
+      docker push ${IMAGE_NAME}:$IMAGE_TAG || true
+      docker push ${IMAGE_NAME}:latest || true
+notes:
+  - This workflow assumes Docker is available in the execution environment and that GITHUB_TOKEN has packages:write scope.
