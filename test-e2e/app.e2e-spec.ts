@@ -1,13 +1,9 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
-import { Department } from '../src/departments/department.entity';
-import { Role } from '../src/roles/role.entity';
-import { Employee } from '../src/employees/employee.entity';
 
-// Boot app with in-memory SQLite
+// Boot app with in-memory SQLite via env-driven TypeORM config
 
 describe('App E2E', () => {
   let app: INestApplication;
@@ -16,10 +12,7 @@ describe('App E2E', () => {
     process.env.NODE_ENV = 'test';
 
     const moduleRef = await Test.createTestingModule({
-      imports: [
-        TypeOrmModule.forRoot({ type: 'sqlite', database: ':memory:', entities: [Department, Role, Employee], synchronize: true }),
-        AppModule,
-      ],
+      imports: [AppModule],
     }).compile();
 
     app = moduleRef.createNestApplication();
