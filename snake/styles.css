@@ -1,0 +1,13 @@
+:root{--bg:#0f0f12;--fg:#e6e6ea;--accent:#6dfc6d;--accent2:#2bd1ff;--danger:#ff5c5c;--grid:#1a1a1f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;display:flex;min-height:100vh}
+.app{margin:auto;max-width:640px;padding:16px;text-align:center}
+h1{margin:8px 0 12px;font-weight:700;letter-spacing:.5px}
+.hud{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.controls button{margin-left:6px;padding:6px 10px;border-radius:6px;border:1px solid var(--grid);background:#15151a;color:var(--fg);cursor:pointer}
+.controls button:hover{border-color:var(--accent2)}
+#game{background:#121218;border:1px solid var(--grid);border-radius:8px;display:block;margin:0 auto}
+.dpad{display:none;gap:6px;align-items:center;justify-content:center;margin-top:10px}
+.dpad .btn{width:56px;height:56px;border-radius:10px;border:1px solid var(--grid);background:#15151a;color:var(--fg);font-size:22px}
+.dpad .row{display:flex;gap:6px}
+.hint{opacity:.7;margin-top:8px}
+@media (max-width:640px){#game{width:100%;height:auto}.hud{flex-direction:column;gap:6px}.dpad{display:flex}}
