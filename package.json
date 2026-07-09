@@ -1,0 +1,24 @@
+{
+  "name": "test-disha-api",
+  "version": "0.1.0",
+  "description": "Minimal Node.js REST API with Express for test-disha",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest --runInBand"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4",
+    "nodemon": "^3.0.2",
+    "eslint": "^8.57.0"
+  }
+}
