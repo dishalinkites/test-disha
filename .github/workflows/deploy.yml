@@ -1,0 +1,32 @@
+name: CI and Deploy
+
+on:
+  push:
+    branches:
+      - test-flow-qa-bug
+  workflow_dispatch:
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Install
+        run: npm ci || npm install
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm test
+      - name: Build
+        run: echo "No build step for this API"
+      - name: Deploy
+        if: success()
+        run: |
+          echo "Deploying to sample environment..."
+          echo "DEPLOY_OK"

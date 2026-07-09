@@ -1,0 +1,24 @@
+{
+  "name": "test-disha-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "test": "jest --runInBand",
+    "lint": "eslint . --ext .js || echo 'eslint not configured'"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "eslint": "^8.57.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
